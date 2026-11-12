@@ -39,11 +39,16 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+# Chat expects its sister repos to sit next to kosika-app in one folder:
+#   kosika/  kosika-designs/  kosika-app/
+# Point KOSIKA_HOME or KOSIKA_DESIGNS_HOME somewhere else if yours differ.
+WORKSPACE = HERE.parent.parent
+KOSIKA_HOME = Path(os.environ.get("KOSIKA_HOME", WORKSPACE / "kosika"))
 # Kosika Designs lives in the standard library (kosika/std/designs*.kos);
-# its photo finder, eyes.py, stays beside the Designs examples.
-DESIGNS = HERE.parent.parent.parent / "kosika" / "std"
-EYES = HERE.parent.parent / "agents" / "designs"
-FONTS = HERE.parent.parent.parent / "kosika" / "app_assets" / "fonts"
+# its photo finder, eyes.py, lives in the kosika-designs repo.
+DESIGNS = KOSIKA_HOME / "kosika" / "std"
+EYES = Path(os.environ.get("KOSIKA_DESIGNS_HOME", WORKSPACE / "kosika-designs"))
+FONTS = KOSIKA_HOME / "kosika" / "app_assets" / "fonts"
 sys.path.insert(0, str(EYES))
 import eyes  # noqa: E402  the photo finder lives beside the Designs programs
 
@@ -92,7 +97,7 @@ def photo_for(words: str) -> dict:
     return {k: found[0][k] for k in empty}
 
 
-AGENTS = HERE.parent.parent / "agents"
+AGENTS = KOSIKA_HOME / "examples" / "agents"
 # What each helper may read: the sites it was granted in Studio.
 TOUCHES = {"gatherer": ["news.google.com", "en.wikipedia.org"], "steward": ["your services' status"], "lookout": ["github.com"], "desk": []}
 
@@ -299,7 +304,7 @@ def main() -> None:
     parser.add_argument("--model", default="openai/gpt-oss-120b")
     parser.add_argument("--model-url", default="https://api.groq.com/openai/v1")
     parser.add_argument("--kosi", default="kosika", help="The kosika command Kosi and its helpers run on.")
-    bench = HERE.parents[4] / "kosika-bench"
+    bench = WORKSPACE / "kosika-bench"
     parser.add_argument("--services", default=str(bench / "aios" / "aios.services"))
     parser.add_argument("--lookout-memory", default=str(bench / "lookout" / "memory"))
     args = parser.parse_args()
