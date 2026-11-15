@@ -40,8 +40,8 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 # Chat expects its sister repos to sit next to kosika-app in one folder:
-#   kosika/  kosika-designs/  kosika-app/
-# Point KOSIKA_HOME or KOSIKA_DESIGNS_HOME somewhere else if yours differ.
+#   kosika/  kosika-agents/  kosika-designs/  kosika-app/
+# Point KOSIKA_HOME, KOSIKA_AGENTS_HOME or KOSIKA_DESIGNS_HOME somewhere else if yours differ.
 WORKSPACE = HERE.parent.parent
 KOSIKA_HOME = Path(os.environ.get("KOSIKA_HOME", WORKSPACE / "kosika"))
 # Kosika Designs lives in the standard library (kosika/std/designs*.kos);
@@ -97,7 +97,8 @@ def photo_for(words: str) -> dict:
     return {k: found[0][k] for k in empty}
 
 
-AGENTS = KOSIKA_HOME / "examples" / "agents"
+# Kosi's helpers (assistant, gatherer, steward, lookout) live in kosika-agents.
+AGENTS = Path(os.environ.get("KOSIKA_AGENTS_HOME", WORKSPACE / "kosika-agents")) / "agents"
 # What each helper may read: the sites it was granted in Studio.
 TOUCHES = {"gatherer": ["news.google.com", "en.wikipedia.org"], "steward": ["your services' status"], "lookout": ["github.com"], "desk": []}
 

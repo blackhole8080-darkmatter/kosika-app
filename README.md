@@ -18,10 +18,11 @@ Kosi, the assistant, lives in the same window. It can check your news, your serv
 
 ### Run it
 
-Chat expects its two sister repos next to it, in one folder:
+Chat expects its three sister repos next to it, in one folder:
 
 ```text
 git clone https://github.com/blackhole8080-darkmatter/kosika
+git clone https://github.com/blackhole8080-darkmatter/kosika-agents
 git clone https://github.com/blackhole8080-darkmatter/kosika-designs
 git clone https://github.com/blackhole8080-darkmatter/kosika-app
 cd kosika && python -m pip install . && cd ..
@@ -29,7 +30,7 @@ python -m pip install numpy pillow scipy
 python kosika-app/chat/server.py          # then open http://127.0.0.1:8793
 ```
 
-It uses free models only. Set `GROQ_API_KEY` first. If your folders sit somewhere else, point `KOSIKA_HOME` and `KOSIKA_DESIGNS_HOME` at them.
+It uses free models only. Set `GROQ_API_KEY` first. If your folders sit somewhere else, point `KOSIKA_HOME`, `KOSIKA_AGENTS_HOME` and `KOSIKA_DESIGNS_HOME` at them.
 
 ## MayaOS
 
