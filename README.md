@@ -32,6 +32,25 @@ python kosika-app/chat/server.py          # then open http://127.0.0.1:8793
 
 It uses free models only. Set `GROQ_API_KEY` first. If your folders sit somewhere else, point `KOSIKA_HOME`, `KOSIKA_AGENTS_HOME` and `KOSIKA_DESIGNS_HOME` at them.
 
+## What Kosika draws
+
+Chat draws beside its answers with Kosika Designs. These are some of the
+newest drawings: Kosi as a living cell, maths that moves, and the Kosika
+Brain in 3D.
+
+<table>
+<tr>
+<td><img src="gallery/kosi-shapes.gif" width="240" alt="Kosi changing shape"></td>
+<td><img src="gallery/m-taylor-growing.gif" width="240" alt="A Taylor series growing"></td>
+<td><img src="gallery/a-black-hole.gif" width="240" alt="A black hole"></td>
+</tr>
+<tr><td>Kosi, a living cell</td><td>A Taylor series, growing</td><td>A black hole</td></tr>
+</table>
+
+<img src="gallery/b-brain-maths-3d-lit.webp" width="480" alt="The Kosika Brain drawn in 3D">
+
+**More, moving and live in 3D, in the [Kosika Gallery](https://blackhole8080-darkmatter.github.io/kosika-site/gallery/).**
+
 ## MayaOS
 
 `mayaos/maya.kos` is the mind of MayaOS, an AI layer over the computer. It decides what to greet you with, what needs your attention and which Kosika app to open. The window that shows it is part of Kosika Studio in the main repo.
